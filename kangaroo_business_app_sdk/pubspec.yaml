@@ -1,0 +1,53 @@
+name: kangaroo_business_app_sdk
+description: Kangaroo App SDK Flutter plugin core module.
+version: 0.0.1
+homepage: https://kangaroorewards.com/
+publish_to: none
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  kangaroo_business_app_sdk_platform_interface:
+#    git:
+#      url: https://github.com/paulkangaroo/kangaroo-app-sdk-flutter-plugin.git
+#      path: kangaroo_business_app_sdk_platform_interface
+#      ref: multi-module
+    path: ../kangaroo_business_app_sdk_platform_interface
+  kangaroo_business_app_sdk_android:
+#    git:
+#      url: https://github.com/paulkangaroo/kangaroo-app-sdk-flutter-plugin.git
+#      path: kangaroo_business_app_sdk_android
+#      ref: multi-module
+    path: ../kangaroo_business_app_sdk_android
+  kangaroo_business_app_sdk_ios:
+#    git:
+#      url: https://github.com/paulkangaroo/kangaroo-app-sdk-flutter-plugin.git
+#      path: kangaroo_business_app_sdk_ios
+#      ref: multi-module
+    path: ../kangaroo_business_app_sdk_ios
+  kangaroo_business_app_sdk_web:
+#    git:
+#      url: https://github.com/paulkangaroo/kangaroo-app-sdk-flutter-plugin.git
+#      path: kangaroo_business_app_sdk_web
+#      ref: multi-module
+    path: ../kangaroo_business_app_sdk_web
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  # This section identifies this Flutter project as a plugin project.
+  # The 'pluginClass' and Android 'package' identifiers should not ordinarily
+  # be modified. They are used by the tooling to maintain consistency when
+  # adding or updating assets for this project.
+  plugin:
+    platforms:
+      android:
+        default_package: kangaroo_business_app_sdk_android
+      ios:
+        default_package: kangaroo_business_app_sdk_ios
+      web:
+        default_package: kangaroo_business_app_sdk_web

@@ -1,0 +1,22 @@
+name: kangaroo_business_app_sdk_macos
+description: Kangaroo App SDK Flutter plugin MacOS module.
+version: 0.0.1
+homepage: https://kangaroorewards.com/
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=1.20.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  plugin:
+    platforms:
+      ios:
+        pluginClass: KangarooAppSDKiOSFlutterPlugin

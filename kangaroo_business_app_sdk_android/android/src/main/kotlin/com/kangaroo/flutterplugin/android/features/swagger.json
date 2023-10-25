@@ -1,0 +1,1 @@
+{"swagger":"2.0","info":{"version":"1.0.0","title":"Kangaroo Customer Api Dictionary","license":{"name":"MIT"}},"consumes":["application/json"],"produces":["application/json"],"paths":{"strings":{"get":{"tags":["core"],"operationId":"getStrings","parameters":[],"x-file":"strings.yaml"}}}}
