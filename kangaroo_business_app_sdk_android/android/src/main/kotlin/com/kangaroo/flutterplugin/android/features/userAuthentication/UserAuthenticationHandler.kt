@@ -2,10 +2,10 @@ package com.kangaroo.flutterplugin.android.features.userAuthentication
 
 import com.kangaroo.flutterplugin.android.base.PluginChannelHandler
 import com.kangaroo.flutterplugin.android.base.pushSerializedResultToEventSink
-import io.flutter.plugin.common.EventChannel
-import io.flutter.plugin.common.MethodCall
 import features.userAuthentication.UserAuthenticationApi
 import features.userAuthentication.serializeUserAuthenticationState
+import io.flutter.plugin.common.EventChannel
+import io.flutter.plugin.common.MethodCall
 
 class UserAuthenticationHandler : EventChannel.StreamHandler, PluginChannelHandler {
     var sink: EventChannel.EventSink? = null
@@ -16,7 +16,7 @@ class UserAuthenticationHandler : EventChannel.StreamHandler, PluginChannelHandl
     override val eventChannel: String
         get() = "customer_sdk/events/user_authentication"
 
-    override fun onMethodCall(call: MethodCall): Unit? {
+    override suspend fun onMethodCall(call: MethodCall): Unit? {
         return authenticateUser(call)
     }
 

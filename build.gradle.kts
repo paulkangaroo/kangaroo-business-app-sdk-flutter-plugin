@@ -15,7 +15,7 @@ plugins {
     id("de.undercouch.download") version "4.1.2"
 }
 
-val kangarooApiVersion = "0.0.428"
+val kangarooApiVersion = "0.0.436"
 
 /**
  * Download api spec from GitHub to build folder
@@ -24,16 +24,16 @@ val downloadZippedApiTask = "downloadZippedKangarooApiSpec".apply {
     tasks.create(this) {
         group = "kangaroo"
     }.apply {
-//        val url = "https://github.com/kangaroorewards/api-docs/archive/refs/tags/v$kangarooApiVersion.zip"
-//        val urlListener = ApacheURLLister()
-//        val files = urlListener.listFiles(java.net.URL(url))
-//        println("********* URL TO DOWNLOAD $files")
-//        download.configure(
-//            delegateClosureOf<DownloadAction> {
-//                src(url)
-//                dest(File("$buildDir/apiSpec", "$kangarooApiVersion.zip"))
-//            }
-//        )
+        val url = "https://github.com/kangaroorewards/api-docs/archive/refs/tags/v$kangarooApiVersion.zip"
+        val urlListener = ApacheURLLister()
+        val files = urlListener.listFiles(java.net.URL(url))
+        println("********* URL TO DOWNLOAD $files")
+        download.configure(
+            delegateClosureOf<DownloadAction> {
+                src(url)
+                dest(File("$buildDir/apiSpec", "$kangarooApiVersion.zip"))
+            }
+        )
     }
 }
 
@@ -47,8 +47,8 @@ val downloadApiTask = "downloadKangarooApiSpec".apply {
     }.apply {
         dependsOn(tasks.getByName(downloadZippedApiTask))
         copy {
-//            from(zipTree(File("$buildDir/apiSpec", "$kangarooApiVersion.zip")))
-//            into("$buildDir/apiSpec")
+            from(zipTree(File("$buildDir/apiSpec", "$kangarooApiVersion.zip")))
+            into("$buildDir/apiSpec")
         }
     }
 }

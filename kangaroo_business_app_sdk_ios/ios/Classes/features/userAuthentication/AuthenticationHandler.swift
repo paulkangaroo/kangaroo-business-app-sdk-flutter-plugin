@@ -1,6 +1,6 @@
 import Foundation
 import Flutter
-import KangarooAppSdkCustomer
+import KangarooAppSdkBusiness
 
 class UserAuthenticationHandler: NSObject, FlutterStreamHandler, PluginChannelHandler {
 

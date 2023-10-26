@@ -1,4 +1,4 @@
-#import "kangaroo_business_app_sdkPlugin.h"
+#import "kangaroo_app_sdkPlugin.h"
 #if __has_include(<kangaroo_business_app_sdk_ios/kangaroo_business_app_sdk_ios-Swift.h>)
 #import <kangaroo_business_app_sdk_ios/kangaroo_business_app_sdk_ios-Swift.h>
 #else

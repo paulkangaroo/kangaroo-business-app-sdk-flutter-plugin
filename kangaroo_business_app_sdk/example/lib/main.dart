@@ -29,13 +29,19 @@ class _MyAppState extends State<MyApp> {
         .listen((authResult) {
       authResult.when(
         idle: () {},
-        loading: () => Fluttertoast.showToast(msg: "loading"),
-        success: (authData) => Fluttertoast.showToast(
-            msg: authData?.accessToken ?? "no access token"),
-        unauthorized: (int code, String message) =>
-            Fluttertoast.showToast(msg: message),
-        error: (int code, String message) =>
-            Fluttertoast.showToast(msg: message),
+        loading: () {
+          return Fluttertoast.showToast(msg: "loading");
+        },
+        success: (authData) {
+          return Fluttertoast.showToast(
+              msg: authData?.accessToken ?? "no access token");
+        },
+        unauthorized: (int code, String message) {
+          return Fluttertoast.showToast(msg: message);
+        },
+        error: (int code, String message) {
+          return Fluttertoast.showToast(msg: message);
+        },
       );
     });
   }
@@ -65,7 +71,7 @@ class _MyAppState extends State<MyApp> {
                 height: 100,
                 child: Center(
                   child: Text(
-                    'authenticate user',
+                    "authenticate user",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),

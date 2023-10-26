@@ -4,14 +4,15 @@ package com.kangaroo.flutterplugin.android.features.strings
 
 import com.kangaroo.flutterplugin.android.base.PluginChannelHandler
 import com.kangaroo.flutterplugin.android.base.pushSerializedResultToEventSink
-import features.strings.StringsApi
-import features.strings.models.ApplicationStringsModel
-import features.strings.serializeStringsState
 import io.flutter.plugin.common.EventChannel
 import io.flutter.plugin.common.MethodCall
+import kotlin.js.ExperimentalJsExport
+import features.strings.StringsApi
+import features.strings.models.ApplicationStringsModel
+
+import features.strings.serializeStringsState
 import kangaroorewards.appsdk.core.domain.SerializedResult
 import kangaroorewards.appsdk.core.domain.toJsonResult
-import kotlin.js.ExperimentalJsExport
 
 
 class StringsHandler : EventChannel.StreamHandler, PluginChannelHandler {

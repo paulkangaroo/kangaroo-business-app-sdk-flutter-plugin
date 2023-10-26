@@ -1,6 +1,6 @@
 import Flutter
 import UIKit
-import KangarooAppSdkCustomer
+import KangarooAppSdkBusiness
 
 public class KangarooAppSDKiOSFlutterPlugin: NSObject, FlutterPlugin {
     

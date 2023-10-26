@@ -1,6 +1,6 @@
 import Foundation
 import Flutter
-import KangarooAppSdkCustomer
+import KangarooAppSdkBusiness
 
 class StringsHandler: NSObject, FlutterStreamHandler, PluginChannelHandler {
     var sink: FlutterEventSink?
@@ -9,8 +9,8 @@ class StringsHandler: NSObject, FlutterStreamHandler, PluginChannelHandler {
 
     var eventChannel: String = "customer_sdk/events/get_strings"
 
-    func onMethodCall(call: FlutterMethodCall) -> Void? {
-        StringsHandler.getStrings(call: call)
+    func onMethodCall(call: FlutterMethodCall) async -> Void? {
+        await StringsHandler.getStrings(call: call)
     }
 
     func getStreamHandler() -> (FlutterStreamHandler & NSObjectProtocol)? {
@@ -18,14 +18,8 @@ class StringsHandler: NSObject, FlutterStreamHandler, PluginChannelHandler {
     }
 
 
-    static func getStrings(call: FlutterMethodCall) {
-        StringsApi().getStrings()
-
-        
-
-        
-
-        
+    static func getStrings(call: FlutterMethodCall) async {
+        await StringsApi().getStrings()
     }
 
     func onListen(withArguments arguments: Any?, eventSink events: @escaping
