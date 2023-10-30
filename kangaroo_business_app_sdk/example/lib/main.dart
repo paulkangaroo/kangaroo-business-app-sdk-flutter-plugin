@@ -3,8 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:kangaroo_business_app_sdk/kangaroo_business_app_sdk.dart';
-import 'package:kangaroo_business_app_sdk/user_authentication/user_authentication_api.dart'
-    as UserAuthenticationApi;
+import 'package:kangaroo_business_app_sdk/strings/strings_api.dart';
+import 'package:kangaroo_business_app_sdk/user_authentication/user_authentication_api.dart';
 
 void main() {
   runApp(MyApp());
@@ -25,32 +25,71 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    UserAuthenticationApi.UserAuthenticationApi.authenticationStream
-        .listen((authResult) {
-      authResult.when(
-        idle: () {},
-        loading: () {
-          return Fluttertoast.showToast(msg: "loading");
-        },
-        success: (authData) {
-          return Fluttertoast.showToast(
-              msg: authData?.accessToken ?? "no access token");
-        },
-        unauthorized: (int code, String message) {
-          return Fluttertoast.showToast(msg: message);
-        },
-        error: (int code, String message) {
-          return Fluttertoast.showToast(msg: message);
-        },
-      );
-    });
+    // UserAuthenticationApi.authenticationStream.listen((authResult) {
+    //   authResult.when(
+    //     idle: () {},
+    //     loading: () {
+    //       return Fluttertoast.showToast(msg: "loading");
+    //     },
+    //     success: (authData) {
+    //       return Fluttertoast.showToast(
+    //           msg: authData?.accessToken ?? "no access token");
+    //     },
+    //     unauthorized: (int code, String message) {
+    //       return Fluttertoast.showToast(msg: message);
+    //     },
+    //     error: (int code, String message) {
+    //       return Fluttertoast.showToast(msg: message);
+    //     },
+    //   );
+    // });
   }
 
-  authenticateUser() {
+  authenticateUser() async {
     debugPrint('authenticating...');
-    UserAuthenticationApi.UserAuthenticationApi.authenticateUser(
+    final authResult = await UserAuthenticationApi.authenticateUser(
       "support@kangaroorewards.com",
       "1111",
+    );
+
+    authResult?.when(
+      idle: () {},
+      loading: () {
+        return Fluttertoast.showToast(msg: "loading");
+      },
+      success: (appStrings) {
+        return Fluttertoast.showToast(
+            msg: appStrings?.accessToken ?? "no auth token found");
+      },
+      unauthorized: (int code, String message) {
+        return Fluttertoast.showToast(msg: message);
+      },
+      error: (int code, String message) {
+        return Fluttertoast.showToast(msg: message);
+      },
+    );
+  }
+
+  getAppStrings() async {
+    debugPrint('getting app strings...');
+    final appStringsResult = await StringsApi.getStrings();
+
+    debugPrint('app strings result: $appStringsResult');
+    appStringsResult?.when(
+      idle: () {},
+      loading: () {
+        return Fluttertoast.showToast(msg: "loading");
+      },
+      success: (appStrings) {
+        return Fluttertoast.showToast(
+            msg: appStrings?.data.first.string ?? "no app strings found");
+      },
+      unauthorized: (int code, String message) {
+        return Fluttertoast.showToast(msg: message);
+      },
+      error: (int code, String message) {
+        return Fluttertoast.showToast(msg: message);
+      },
     );
   }
 
@@ -62,16 +101,28 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Kangaroo SDK Sandbox'),
         ),
         body: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           child: Column(
             children: [
               MaterialButton(
                 onPressed: authenticateUser,
                 color: Colors.purple.shade300,
                 height: 100,
-                child: Center(
+                child: const Center(
                   child: Text(
                     "authenticate user",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 12),
+              MaterialButton(
+                onPressed: getAppStrings,
+                color: Colors.green.shade300,
+                height: 100,
+                child: const Center(
+                  child: Text(
+                    "get app strings",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),

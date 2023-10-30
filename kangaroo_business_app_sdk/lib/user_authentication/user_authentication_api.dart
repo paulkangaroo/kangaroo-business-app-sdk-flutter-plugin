@@ -7,8 +7,9 @@ export 'package:kangaroo_business_app_sdk_platform_interface/platform_interface/
     show UserAuthenticationModel;
 
 class UserAuthenticationApi {
-  static authenticateUser(String username, String password) {
-    UserAuthenticationApiInterface.instance.authenticateUser(
+  static Future<Result<UserAuthenticationModel>?> authenticateUser(
+      String username, String password) {
+    return UserAuthenticationApiInterface.instance.authenticateUser(
       username,
       password,
     );

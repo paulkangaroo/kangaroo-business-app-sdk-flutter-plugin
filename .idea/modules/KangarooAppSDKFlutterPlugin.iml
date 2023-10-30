@@ -26,6 +26,12 @@
       <excludeFolder url="file://$MODULE_DIR$/../../kangaroo_business_app_sdk/example/ios/.symlinks/plugins/kangaroo_business_app_sdk_ios/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/../../kangaroo_business_app_sdk/example/ios/.symlinks/plugins/kangaroo_business_app_sdk_ios/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/../../kangaroo_business_app_sdk/example/ios/.symlinks/plugins/kangaroo_business_app_sdk_ios/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../kangaroo_business_app_sdk/example/ios/.symlinks/plugins/fluttertoast/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/../../kangaroo_business_app_sdk/example/ios/.symlinks/plugins/fluttertoast/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/../../kangaroo_business_app_sdk/example/ios/.symlinks/plugins/fluttertoast/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../kangaroo_business_app_sdk/example/ios/.symlinks/plugins/fluttertoast/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/../../kangaroo_business_app_sdk/example/ios/.symlinks/plugins/fluttertoast/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/../../kangaroo_business_app_sdk/example/ios/.symlinks/plugins/fluttertoast/example/build" />
     </content>
   </component>
 </module>

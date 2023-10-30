@@ -6,17 +6,19 @@ import 'package:kangaroo_business_app_sdk_platform_interface/src/base/result.dar
 import 'package:kangaroo_business_app_sdk_platform_interface/src/base/state.dart';
 import 'package:kangaroo_business_app_sdk_platform_interface/src/features/user_authentication/user_authentication_api_interface.dart';
 
-import 'models/user_authentication_model.dart';
-
 class UserAuthenticationApiFederated extends UserAuthenticationApiInterface {
   @override
-  authenticateUser(final String username, final String password) {
-    sdkMethodChannel.invokeMethod(
+  authenticateUser(final String username, final String password) async {
+    final Future<String?> response = sdkMethodChannel.invokeMethod(
       'customer_sdk/methods/user_authentication',
       {
         'username': username,
         'password': password,
       },
+    );
+
+    return UserAuthenticationApiInterface.deSerializedPlatformResponse(
+      response,
     );
   }
 
