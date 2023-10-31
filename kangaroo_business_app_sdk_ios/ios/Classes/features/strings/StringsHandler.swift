@@ -20,7 +20,7 @@ class StringsHandler: NSObject, FlutterStreamHandler, PluginChannelHandler {
 
     static func getStrings(call: FlutterMethodCall) async -> String? {
         do {
-        let result = try await StringsApi().getStrings().serializeNative()
+        let result = try await StringsApi().getStrings().serializeStringsApiResult()
 
         switch result {
             case let result as SerializedResultSuccess:

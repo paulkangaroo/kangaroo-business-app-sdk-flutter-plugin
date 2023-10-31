@@ -30,7 +30,7 @@ class UserAuthenticationHandler: NSObject, FlutterStreamHandler, PluginChannelHa
                 let result = try await UserAuthenticationApi().authenticateUser(
                     username: username,
                     password: password
-                ).serializeNative()
+                ).serializeUserAuthenticationResult()
 
                 switch result {
                 case let result as SerializedResultSuccess:

@@ -48,8 +48,8 @@ class _MyAppState extends State<MyApp> {
   authenticateUser() async {
     debugPrint('authenticating...');
     final authResult = await UserAuthenticationApi.authenticateUser(
-      "support@kangaroorewards.com",
-      "1111",
+      "tahanmario4",
+      "Germ@ny12",
     );
 
     authResult?.when(
