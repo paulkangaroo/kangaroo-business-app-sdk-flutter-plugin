@@ -42,6 +42,7 @@ class StringsHandler: NSObject, FlutterStreamHandler, PluginChannelHandler {
         
 
         
+        return nil
     }
 
     func onListen(withArguments arguments: Any?, eventSink events: @escaping

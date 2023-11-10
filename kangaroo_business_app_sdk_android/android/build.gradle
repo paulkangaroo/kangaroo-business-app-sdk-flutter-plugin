@@ -67,6 +67,6 @@ android {
         implementation 'org.reflections:reflections:0.10.1'
 
         /* Comment out this dependency when building as it will clash with flutter code */
-//        implementation files('src/flutter.jar')
+        implementation files('src/flutter.jar')
     }
 }
