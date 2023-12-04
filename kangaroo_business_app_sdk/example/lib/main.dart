@@ -2,8 +2,10 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:kangaroo_business_app_sdk/business_campaigns/business_campaigns_api.dart';
 import 'package:kangaroo_business_app_sdk/kangaroo_business_app_sdk.dart';
 import 'package:kangaroo_business_app_sdk/strings/strings_api.dart';
+import 'package:kangaroo_business_app_sdk/update_business_reward/update_business_reward_api.dart';
 import 'package:kangaroo_business_app_sdk/update_business_rules/update_business_rules_api.dart';
 import 'package:kangaroo_business_app_sdk/user_authentication/user_authentication_api.dart';
 
@@ -69,6 +71,54 @@ class _MyAppState extends State<MyApp> {
         return Fluttertoast.showToast(msg: message);
       },
     );
+  }
+
+  void updateBusinessReward() async {
+    UpdateBusinessRewardApi.updateBusinessReward(
+      rewardId: 1,
+      updateRewardRequest: CreateUpdateRewardRequestModel(
+        neverExpiresFlag: 1,
+        discountValue: 14,
+        realValue: 177,
+        rewardLanguages: [
+          RewardRequestLanguages(
+            languageId: 1,
+            title: 'Sup broseph',
+            description: 'updated descrption',
+            termsConditions: null,
+            link: "https://www.kangaroorewards.com",
+            note: "Eng note",
+          )
+        ],
+        availableAtBranches: [
+          BranchIds(id: 'a4545454545454'),
+        ],
+        targetedFlag: 1,
+        amount: 99,
+        typeId: 1,
+        subtypeId: null,
+        publishAt: '',
+        expiresAt: '',
+        images: [],
+        points: null,
+        partnerReward: null,
+        partnerRewardType: null,
+        redeemForGiftCard: null,
+      ),
+    );
+  }
+
+  void getBusinessCampaigns() {
+    BusinessCampaignsApi.getBusinessCampaigns(perPage: 15)
+        .then((value) => value?.whenOrNull(
+              success: (success) {
+                Fluttertoast.showToast(
+                    msg: "received campaigns: ${success?.data.last.subject}");
+              },
+              error: (code, msg) {
+                Fluttertoast.showToast(msg: "received campaigns error: $msg");
+              },
+            ));
   }
 
   updateBusinessRules() async {
@@ -164,6 +214,30 @@ class _MyAppState extends State<MyApp> {
                 child: const Center(
                   child: Text(
                     "update business rules",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 12),
+              MaterialButton(
+                onPressed: updateBusinessReward,
+                color: Colors.brown.shade300,
+                height: 100,
+                child: const Center(
+                  child: Text(
+                    "update business reward",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 12),
+              MaterialButton(
+                onPressed: getBusinessCampaigns,
+                color: Colors.purple.shade300,
+                height: 100,
+                child: const Center(
+                  child: Text(
+                    "get campaigns",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),

@@ -3,7 +3,13 @@ import Foundation
 class PluginHandlerListHolder {
     static var pluginHandlerList: [PluginChannelHandler] =
         [
+    CreateBusinessOfferHandler(),
+
+    CreateBusinessRewardHandler(),
+
     DeleteOfferByIdHandler(),
+
+    DeleteRecommendationByIdHandler(),
 
     DeleteRewardByIdHandler(),
 
@@ -11,11 +17,17 @@ class PluginHandlerListHolder {
 
     BusinessActiveRewardsHandler(),
 
+    BusinessCampaignByIdHandler(),
+
+    BusinessCampaignsHandler(),
+
     BusinessInActiveOffersHandler(),
 
     BusinessInActiveRewardsHandler(),
 
     BusinessOfferByIdHandler(),
+
+    BusinessRecommendationsHandler(),
 
     BusinessRewardByIdHandler(),
 
@@ -24,6 +36,10 @@ class PluginHandlerListHolder {
     StringsHandler(),
 
     GetUserDetailsHandler(),
+
+    UpdateBusinessOfferHandler(),
+
+    UpdateBusinessRewardHandler(),
 
     UpdateBusinessRulesHandler(),
 

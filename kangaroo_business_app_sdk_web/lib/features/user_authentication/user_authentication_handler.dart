@@ -1,10 +1,11 @@
 // ignore_for_file: implementation_imports
 
-@JS('KangarooAppCustomerSDK')
-library kangaroo_app_customer_sdk.js;
+@JS('KangarooAppBusinessSDK')
+library kangaroo_app_business_sdk.js;
 
 import 'dart:async';
 import 'dart:convert';
+import 'dart:js_util';
 
 import 'package:js/js.dart';
 import 'package:kangaroo_business_app_sdk_platform_interface/platform_interface/base_platform_interface.dart';
@@ -23,10 +24,13 @@ class UserAuthenticationHandler extends UserAuthenticationApiInterface
     final String username,
     final String password,
   ) {
-    UserAuthenticationApi().authenticateUser(
+    final Future<String?> request =
+        promiseToFuture<String?>(UserAuthenticationApi().authenticateUser(
       username,
       password,
-    );
+    ));
+
+    return UserAuthenticationApiInterface.deSerializedPlatformResponse(request);
   }
 
   @override
@@ -61,7 +65,7 @@ class UserAuthenticationHandler extends UserAuthenticationApiInterface
 class UserAuthenticationApi {
   external UserAuthenticationApi();
 
-  external void authenticateUser(
+  external dynamic authenticateUser(
     String username,
     final String password,
   );

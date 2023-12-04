@@ -1,7 +1,7 @@
 // ignore_for_file: implementation_imports
 
-@JS('KangarooAppCustomerSDK')
-library kangaroo_app_customer_sdk.js;
+@JS('KangarooAppBusinessSDK')
+library kangaroo_app_business_sdk.js;
 
 import 'dart:async';
 import 'dart:convert';

@@ -12,7 +12,8 @@ part 'application_strings_model.g.dart';
 @JsonSerializable(explicitToJson: true, fieldRename: FieldRename.snake, checked: true, disallowUnrecognizedKeys: true,)
 class ApplicationStringsModel {
   ///A list of application strings. 
-  final List<ApplicationString> data;
+  @JsonKey(name: "data")
+final List<ApplicationString> data;
 
   ApplicationStringsModel({
     required this.data,
